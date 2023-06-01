@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="MovesRes" load_steps=2 format=3 uid="uid://bbc143f8p2wuk"]
+
+[ext_resource type="Script" path="res://Resources/Blueprints/MovesRes.gd" id="1_rcr52"]
+
+[resource]
+script = ExtResource("1_rcr52")
+move_name = "Tackle"
+type = "Normal"
+category = "Physical"
+maxpp = 35
+description = "The user headbutts the other pokemon"
+damage = 40
+accuracy = 100

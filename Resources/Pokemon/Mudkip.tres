@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="PokemonRes" load_steps=4 format=3 uid="uid://b0nrl7qawvyjp"]
+
+[ext_resource type="Script" path="res://Resources/Blueprints/PokemonRes.gd" id="1_3wjas"]
+[ext_resource type="Texture2D" uid="uid://deqbixba3ih1q" path="res://Assets/Pokemon Sprites/Back/258_back.png" id="2_7uo2a"]
+[ext_resource type="Texture2D" uid="uid://dx6o8xl3b26q8" path="res://Assets/Pokemon Sprites/Front/258_front.png" id="2_ujf8v"]
+
+[resource]
+script = ExtResource("1_3wjas")
+name = "Mudkip"
+health = 0
+attack = 0
+defense = 0
+sp_attack = 0
+sp_defense = 0
+speed = 0
+type1 = 3
+type2 = 0
+sprite_front = ExtResource("2_ujf8v")
+sprite_back = ExtResource("2_7uo2a")
+metadata/_editor_prop_ptr_sprite_front = NodePath("")

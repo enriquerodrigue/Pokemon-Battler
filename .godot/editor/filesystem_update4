@@ -1,0 +1,5 @@
+res://Scenes/battle_scene.tscn
+res://Resources/Blueprints/PokemonRes.gd
+res://Resources/Pokemon/Mudkip.tres
+res://Resources/Blueprints/MovesRes.gd
+res://Resources/Moves/Tackle.tres

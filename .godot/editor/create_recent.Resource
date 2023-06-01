@@ -1,0 +1,2 @@
+MovesRes
+PokemonRes

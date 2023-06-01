@@ -1,4 +1,5 @@
 2a60927148abd1d33b818b535e306557
+<<<<<<< Updated upstream
 ::res://::1685638804
 ::res://Assets/::1685640036
 ::res://Assets/Fonts/::1685640492
@@ -17,3 +18,15 @@ pokemon_box.png::CompressedTexture2D::4270281591723444727::1685640252::168564049
 ::res://Scenes/::1685638832
 battle_scene.tscn::PackedScene::1134676020120499078::1685638832::0::1::::<><>::
 ::res://Scripts/::1685638797
+=======
+::res://::1685640953
+::res://Moves/::1685640953
+::res://Resources/::1685639745
+::res://Resources/Blueprints/::1685640942
+MovesRes.gd::GDScript::-1::1685640942::0::1::::MovesRes<>Resource<>::
+PokemonRes.gd::GDScript::-1::1685640191::0::1::::PokemonRes<>Resource<>::
+::res://Resources/Pokemon/::1685640942
+Mudkip.tres::Resource/PokemonRes::4169032223550999593::1685640942::0::1::::<><>::res://Resources/Blueprints/PokemonRes.gd
+::res://Scenes/::1685640942
+battle_scene.tscn::PackedScene::1134676020120499078::1685640942::0::1::::<><>::
+>>>>>>> Stashed changes
