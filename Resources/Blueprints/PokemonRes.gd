@@ -2,13 +2,6 @@ extends Resource
 
 class_name PokemonRes
 
-enum types {
-	NONE,
-	NORMAL,
-	FIRE,
-	WATER,
-	GRASS
-}
 
 @export var name: String
 #stats
@@ -19,8 +12,10 @@ enum types {
 @export var sp_defense: int
 @export var speed: int
 
-@export var type1 = types.NONE
-@export var type2 = types.NONE
+@export var moves = [4]
+
+@export var type1: Global.type
+@export var type2: Global.type
 #sprite
 @export var sprite_front: Texture
 @export var sprite_back: Texture

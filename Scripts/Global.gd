@@ -7,3 +7,9 @@ enum type {
 	WATER,
 	GRASS
 }
+
+enum category {
+	STATUS,
+	PHYSICAL,
+	SPECIAL
+}

@@ -1,0 +1,70 @@
+[gd_scene load_steps=7 format=3 uid="uid://bisymgsg41lg"]
+
+[ext_resource type="Texture2D" uid="uid://da6y8cqgdwqpw" path="res://Assets/UI/battle_background.png" id="1_3mkj8"]
+[ext_resource type="Script" path="res://Scripts/BattleSystem.gd" id="1_vxj8h"]
+[ext_resource type="Texture2D" uid="uid://cs5xgg4a23a4k" path="res://Assets/Pokemon Sprites/Back/261_front.png" id="3_act06"]
+[ext_resource type="Texture2D" uid="uid://dx6o8xl3b26q8" path="res://Assets/Pokemon Sprites/Front/258_front.png" id="4_0cgwc"]
+[ext_resource type="Texture2D" uid="uid://b13s6cqx3y36j" path="res://Assets/UI/pokemon_box.png" id="5_r4rq2"]
+[ext_resource type="FontFile" uid="uid://bh03hy3md3o8d" path="res://Assets/Fonts/pokemon_pixel_font.ttf" id="6_ngxqq"]
+
+[node name="Battle Arena" type="CanvasLayer"]
+script = ExtResource("1_vxj8h")
+
+[node name="Background" type="TextureRect" parent="."]
+offset_left = 88.0
+offset_top = 43.0
+offset_right = 1060.0
+offset_bottom = 598.0
+texture = ExtResource("1_3mkj8")
+
+[node name="PlayerSprite" type="TextureRect" parent="."]
+offset_left = 194.0
+offset_top = 283.0
+offset_right = 506.0
+offset_bottom = 595.0
+texture = ExtResource("3_act06")
+
+[node name="EnemySprite" type="TextureRect" parent="."]
+offset_left = 691.0
+offset_top = 172.0
+offset_right = 954.0
+offset_bottom = 435.0
+texture = ExtResource("4_0cgwc")
+
+[node name="EnemyBox" type="TextureRect" parent="."]
+offset_left = 117.0
+offset_top = 58.0
+offset_right = 538.0
+offset_bottom = 223.0
+texture = ExtResource("5_r4rq2")
+expand_mode = 2
+
+[node name="EnemyName" type="Label" parent="EnemyBox"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 13.0
+offset_right = 250.0
+offset_bottom = 82.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_ngxqq")
+theme_override_font_sizes/font_size = 60
+text = "Mudkip"
+
+[node name="PlayerBox" type="TextureRect" parent="."]
+offset_left = 597.0
+offset_top = 406.0
+offset_right = 1018.0
+offset_bottom = 571.0
+texture = ExtResource("5_r4rq2")
+expand_mode = 2
+
+[node name="PlayerName" type="Label" parent="PlayerBox"]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 8.0
+offset_right = 246.0
+offset_bottom = 77.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_ngxqq")
+theme_override_font_sizes/font_size = 60
+text = "Poochyena"

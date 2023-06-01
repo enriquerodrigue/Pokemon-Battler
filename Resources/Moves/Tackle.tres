@@ -5,9 +5,9 @@
 [resource]
 script = ExtResource("1_rcr52")
 move_name = "Tackle"
-type = "Normal"
-category = "Physical"
-maxpp = 35
+type = 1
+category = 1
+max_pp = 35
 description = "The user headbutts the other pokemon"
 damage = 40
 accuracy = 100
