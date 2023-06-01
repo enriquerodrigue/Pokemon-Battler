@@ -1,3 +1,19 @@
 2a60927148abd1d33b818b535e306557
-::res://::1685638766
-icon.svg::CompressedTexture2D::4441480867907413028::1685638737::1685638737::1::::<><>::
+::res://::1685638804
+::res://Assets/::1685640036
+::res://Assets/Fonts/::1685640492
+pokemon_pixel_font.ttf::FontFile::2931065913730896429::1685640204::1685640492::1::::<><>::
+::res://Assets/Pokemon Sprites/::1685639960
+::res://Assets/Pokemon Sprites/Back/::1685640888
+258_back.png::CompressedTexture2D::7473123682659993312::1685640867::1685640892::1::::<><>::
+261_front.png::CompressedTexture2D::6099579451066247860::1685640870::1685640892::1::::<><>::
+::res://Assets/Pokemon Sprites/Front/::1685640834
+258_front.png::CompressedTexture2D::8838511360532020837::1685640797::1685640892::1::::<><>::
+261_front.png::CompressedTexture2D::6446390897700115523::1685640824::1685640892::1::::<><>::
+::res://Assets/UI/::1685640492
+battle_background.png::CompressedTexture2D::7224774030521489140::1685639532::1685639536::1::::<><>::
+dialog_box.png::CompressedTexture2D::5324265372084418632::1685640257::1685640492::1::::<><>::
+pokemon_box.png::CompressedTexture2D::4270281591723444727::1685640252::1685640492::1::::<><>::
+::res://Scenes/::1685638832
+battle_scene.tscn::PackedScene::1134676020120499078::1685638832::0::1::::<><>::
+::res://Scripts/::1685638797
