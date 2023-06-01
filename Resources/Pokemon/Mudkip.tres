@@ -8,12 +8,12 @@
 [resource]
 script = ExtResource("1_3wjas")
 name = "Mudkip"
-health = 0
-attack = 0
-defense = 0
-sp_attack = 0
-sp_defense = 0
-speed = 0
+health = 50
+attack = 70
+defense = 50
+sp_attack = 50
+sp_defense = 50
+speed = 40
 moves = [ExtResource("1_jtl3d"), ExtResource("1_jtl3d"), null, null]
 type1 = 3
 type2 = 0
