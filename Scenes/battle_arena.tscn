@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bisymgsg41lg"]
+[gd_scene load_steps=11 format=3 uid="uid://bisymgsg41lg"]
 
 [ext_resource type="Texture2D" uid="uid://da6y8cqgdwqpw" path="res://Assets/UI/battle_background.png" id="1_3mkj8"]
 [ext_resource type="Script" path="res://Scripts/BattleSystem.gd" id="1_vxj8h"]
@@ -6,36 +6,73 @@
 [ext_resource type="Texture2D" uid="uid://dx6o8xl3b26q8" path="res://Assets/Pokemon Sprites/Front/258_front.png" id="4_0cgwc"]
 [ext_resource type="Texture2D" uid="uid://b13s6cqx3y36j" path="res://Assets/UI/pokemon_box.png" id="5_r4rq2"]
 [ext_resource type="FontFile" uid="uid://bh03hy3md3o8d" path="res://Assets/Fonts/pokemon_pixel_font.ttf" id="6_ngxqq"]
+[ext_resource type="Texture2D" uid="uid://ch4d4w7je0uro" path="res://Assets/UI/dialog_box.png" id="7_bh4u6"]
+
+[sub_resource type="Animation" id="Animation_wtbw1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_uhh2f"]
+resource_name = "Type"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bt23n"]
+_data = {
+"RESET": SubResource("Animation_wtbw1"),
+"Type": SubResource("Animation_uhh2f")
+}
 
 [node name="Battle Arena" type="CanvasLayer"]
 script = ExtResource("1_vxj8h")
 
 [node name="Background" type="TextureRect" parent="."]
-offset_left = 88.0
-offset_top = 43.0
-offset_right = 1060.0
-offset_bottom = 598.0
+offset_left = 73.0
+offset_right = 1045.0
+offset_bottom = 555.0
 texture = ExtResource("1_3mkj8")
+metadata/_edit_use_anchors_ = true
 
 [node name="PlayerSprite" type="TextureRect" parent="."]
-offset_left = 194.0
-offset_top = 283.0
-offset_right = 506.0
-offset_bottom = 595.0
+offset_left = 179.0
+offset_top = 240.0
+offset_right = 491.0
+offset_bottom = 552.0
 texture = ExtResource("3_act06")
 
 [node name="EnemySprite" type="TextureRect" parent="."]
-offset_left = 691.0
-offset_top = 172.0
-offset_right = 954.0
-offset_bottom = 435.0
+offset_left = 676.0
+offset_top = 129.0
+offset_right = 939.0
+offset_bottom = 392.0
 texture = ExtResource("4_0cgwc")
 
 [node name="EnemyBox" type="TextureRect" parent="."]
-offset_left = 117.0
-offset_top = 58.0
-offset_right = 538.0
-offset_bottom = 223.0
+offset_left = 102.0
+offset_top = 15.0
+offset_right = 523.0
+offset_bottom = 180.0
 texture = ExtResource("5_r4rq2")
 expand_mode = 2
 
@@ -50,11 +87,24 @@ theme_override_fonts/font = ExtResource("6_ngxqq")
 theme_override_font_sizes/font_size = 60
 text = "Mudkip"
 
+[node name="EnemyHealth" type="Label" parent="EnemyBox"]
+layout_mode = 0
+offset_left = 182.0
+offset_top = 84.0
+offset_right = 392.0
+offset_bottom = 153.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_ngxqq")
+theme_override_font_sizes/font_size = 60
+text = "1
+"
+horizontal_alignment = 2
+
 [node name="PlayerBox" type="TextureRect" parent="."]
-offset_left = 597.0
-offset_top = 406.0
-offset_right = 1018.0
-offset_bottom = 571.0
+offset_left = 587.0
+offset_top = 342.0
+offset_right = 1008.0
+offset_bottom = 507.0
 texture = ExtResource("5_r4rq2")
 expand_mode = 2
 
@@ -68,3 +118,160 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("6_ngxqq")
 theme_override_font_sizes/font_size = 60
 text = "Poochyena"
+
+[node name="PlayerHealth" type="Label" parent="PlayerBox"]
+layout_mode = 0
+offset_left = 182.0
+offset_top = 84.0
+offset_right = 392.0
+offset_bottom = 153.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_ngxqq")
+theme_override_font_sizes/font_size = 60
+text = "1"
+horizontal_alignment = 2
+
+[node name="ActionBox" type="TextureRect" parent="."]
+offset_left = 77.0
+offset_top = 503.0
+offset_right = 1057.0
+offset_bottom = 653.0
+texture = ExtResource("7_bh4u6")
+expand_mode = 1
+
+[node name="ActionLabel" type="Label" parent="ActionBox"]
+layout_mode = 0
+offset_left = 78.0
+offset_top = 19.0
+offset_right = 288.0
+offset_bottom = 88.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_ngxqq")
+theme_override_font_sizes/font_size = 50
+text = "A wild Mudkip has appeared!"
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ActionBox/ActionLabel"]
+autoplay = "Type"
+libraries = {
+"": SubResource("AnimationLibrary_bt23n")
+}
+
+[node name="Timer" type="Timer" parent="ActionBox"]
+one_shot = true
+
+[node name="ActionButtons" type="Node2D" parent="ActionBox"]
+visible = false
+
+[node name="Fight" type="Button" parent="ActionBox/ActionButtons"]
+offset_left = 616.0
+offset_top = 16.0
+offset_right = 718.0
+offset_bottom = 65.0
+theme_override_fonts/font = ExtResource("6_ngxqq")
+theme_override_font_sizes/font_size = 35
+text = "Fight"
+
+[node name="Bag" type="Button" parent="ActionBox/ActionButtons"]
+offset_left = 736.0
+offset_top = 16.0
+offset_right = 838.0
+offset_bottom = 65.0
+theme_override_fonts/font = ExtResource("6_ngxqq")
+theme_override_font_sizes/font_size = 35
+text = "Bag"
+
+[node name="Pokemon" type="Button" parent="ActionBox/ActionButtons"]
+offset_left = 617.0
+offset_top = 75.0
+offset_right = 719.0
+offset_bottom = 124.0
+theme_override_fonts/font = ExtResource("6_ngxqq")
+theme_override_font_sizes/font_size = 35
+text = "Pokemon"
+
+[node name="Run" type="Button" parent="ActionBox/ActionButtons"]
+offset_left = 736.0
+offset_top = 76.0
+offset_right = 838.0
+offset_bottom = 125.0
+theme_override_fonts/font = ExtResource("6_ngxqq")
+theme_override_font_sizes/font_size = 35
+text = "Run
+"
+
+[node name="MoveButtons" type="Node2D" parent="ActionBox"]
+visible = false
+position = Vector2(-482, 5)
+
+[node name="Return" type="Button" parent="ActionBox/MoveButtons"]
+offset_left = 1250.0
+offset_top = 73.0
+offset_right = 1352.0
+offset_bottom = 122.0
+theme_override_fonts/font = ExtResource("6_ngxqq")
+theme_override_font_sizes/font_size = 35
+text = "Return
+"
+
+[node name="MoveDetails" type="Label" parent="ActionBox/MoveButtons"]
+offset_left = 929.0
+offset_top = 20.0
+offset_right = 1201.0
+offset_bottom = 119.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_ngxqq")
+theme_override_font_sizes/font_size = 60
+text = "Type/Fire"
+horizontal_alignment = 2
+
+[node name="Buttons" type="Node2D" parent="ActionBox/MoveButtons"]
+
+[node name="Move1" type="Button" parent="ActionBox/MoveButtons/Buttons"]
+offset_left = 616.0
+offset_top = 16.0
+offset_right = 718.0
+offset_bottom = 65.0
+theme_override_fonts/font = ExtResource("6_ngxqq")
+theme_override_font_sizes/font_size = 35
+text = "123"
+
+[node name="Move2" type="Button" parent="ActionBox/MoveButtons/Buttons"]
+offset_left = 736.0
+offset_top = 16.0
+offset_right = 838.0
+offset_bottom = 65.0
+theme_override_fonts/font = ExtResource("6_ngxqq")
+theme_override_font_sizes/font_size = 35
+text = "123"
+
+[node name="Move3" type="Button" parent="ActionBox/MoveButtons/Buttons"]
+offset_left = 617.0
+offset_top = 75.0
+offset_right = 719.0
+offset_bottom = 124.0
+theme_override_fonts/font = ExtResource("6_ngxqq")
+theme_override_font_sizes/font_size = 35
+text = "123"
+
+[node name="Move4" type="Button" parent="ActionBox/MoveButtons/Buttons"]
+offset_left = 736.0
+offset_top = 76.0
+offset_right = 838.0
+offset_bottom = 125.0
+theme_override_fonts/font = ExtResource("6_ngxqq")
+theme_override_font_sizes/font_size = 35
+text = "123
+"
+
+[connection signal="animation_finished" from="ActionBox/ActionLabel/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="ActionBox/Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="ActionBox/ActionButtons/Fight" to="." method="_on_fight_pressed"]
+[connection signal="pressed" from="ActionBox/ActionButtons/Run" to="." method="_on_run_pressed"]
+[connection signal="pressed" from="ActionBox/MoveButtons/Return" to="." method="_on_return_pressed"]
+[connection signal="mouse_entered" from="ActionBox/MoveButtons/Buttons/Move1" to="." method="_on_move_1_mouse_entered"]
+[connection signal="mouse_entered" from="ActionBox/MoveButtons/Buttons/Move1" to="." method="_on_move_mouse_entered" binds= [0]]
+[connection signal="mouse_entered" from="ActionBox/MoveButtons/Buttons/Move2" to="." method="_on_move_mouse_entered" binds= [1]]
+[connection signal="mouse_entered" from="ActionBox/MoveButtons/Buttons/Move3" to="." method="_on_move_mouse_entered" binds= [2]]
+[connection signal="mouse_entered" from="ActionBox/MoveButtons/Buttons/Move4" to="." method="_on_move_mouse_entered" binds= [3]]

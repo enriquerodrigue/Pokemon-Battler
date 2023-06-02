@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="PokemonRes" load_steps=5 format=3 uid="uid://b0nrl7qawvyjp"]
+[gd_resource type="Resource" script_class="PokemonRes" load_steps=6 format=3 uid="uid://b0nrl7qawvyjp"]
 
 [ext_resource type="Script" path="res://Resources/Blueprints/PokemonRes.gd" id="1_3wjas"]
 [ext_resource type="Resource" uid="uid://bbc143f8p2wuk" path="res://Resources/Moves/Tackle.tres" id="1_jtl3d"]
+[ext_resource type="Resource" uid="uid://dem6lxmcx67bh" path="res://Resources/Moves/Water_Gun.tres" id="2_1gdds"]
 [ext_resource type="Texture2D" uid="uid://deqbixba3ih1q" path="res://Assets/Pokemon Sprites/Back/258_back.png" id="2_7uo2a"]
 [ext_resource type="Texture2D" uid="uid://dx6o8xl3b26q8" path="res://Assets/Pokemon Sprites/Front/258_front.png" id="2_ujf8v"]
 
@@ -14,7 +15,7 @@ defense = 50
 sp_attack = 50
 sp_defense = 50
 speed = 40
-moves = [ExtResource("1_jtl3d"), ExtResource("1_jtl3d"), null, null]
+moves = [ExtResource("1_jtl3d"), ExtResource("2_1gdds"), null, null]
 type1 = 3
 type2 = 0
 sprite_front = ExtResource("2_ujf8v")

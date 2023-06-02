@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="MovesRes" load_steps=2 format=3 uid="uid://dem6lxmcx67bh"]
+
+[ext_resource type="Script" path="res://Resources/Blueprints/MovesRes.gd" id="1_s2fmf"]
+
+[resource]
+script = ExtResource("1_s2fmf")
+move_name = "Water Gun"
+type = 3
+category = 1
+max_pp = 30
+description = ""
+damage = 0
+accuracy = 0
