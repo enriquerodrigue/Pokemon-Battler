@@ -9,6 +9,22 @@
 [ext_resource type="Texture2D" uid="uid://ch4d4w7je0uro" path="res://Assets/UI/dialog_box.png" id="7_bh4u6"]
 [ext_resource type="AudioStream" uid="uid://ci4r6jmds1yao" path="res://Assets/Music/battle music.mp3" id="8_ba4h8"]
 
+[sub_resource type="Animation" id="Animation_m7mdj"]
+resource_name = "Attack"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(170, 240), Vector2(230, 240), Vector2(170, 240)]
+}
+
 [sub_resource type="Animation" id="Animation_g3ygr"]
 length = 0.001
 tracks/0/type = "value"
@@ -40,27 +56,27 @@ tracks/0/keys = {
 "values": [Vector2(-50, 240), Vector2(190, 240), Vector2(170, 240)]
 }
 
-[sub_resource type="Animation" id="Animation_m7mdj"]
-resource_name = "Attack"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(170, 240), Vector2(230, 240), Vector2(170, 240)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_clwc7"]
 _data = {
 "Attack": SubResource("Animation_m7mdj"),
 "RESET": SubResource("Animation_g3ygr"),
 "enter_battle": SubResource("Animation_7oh4w")
+}
+
+[sub_resource type="Animation" id="Animation_aelvj"]
+resource_name = "Hit"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
 }
 
 [sub_resource type="Animation" id="Animation_aplx0"]
@@ -104,22 +120,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(900, 129), Vector2(650, 129), Vector2(680, 129)]
-}
-
-[sub_resource type="Animation" id="Animation_aelvj"]
-resource_name = "Hit"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, false, true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jo67r"]
@@ -433,7 +433,6 @@ text = "123
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_ba4h8")
 volume_db = -8.0
-autoplay = true
 
 [connection signal="animation_finished" from="PlayerSprite/AnimationPlayer" to="." method="_on_player_animation_finished"]
 [connection signal="animation_finished" from="ActionBox/ActionLabel/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

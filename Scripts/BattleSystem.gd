@@ -17,6 +17,7 @@ func _ready():
 	setup_player_hud()
 	setup_enemy_hud()
 	setup_action_box()
+	$AudioStreamPlayer2D.play(0.3)
 	
 	
 func setup_player_hud():
