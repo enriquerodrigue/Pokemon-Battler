@@ -187,6 +187,20 @@ text = "1
 "
 horizontal_alignment = 2
 
+[node name="EnemyLevel" type="Label" parent="EnemyBox"]
+layout_mode = 0
+offset_left = 173.0
+offset_top = 18.0
+offset_right = 383.0
+offset_bottom = 87.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("6_ngxqq")
+theme_override_font_sizes/font_size = 40
+text = "Lv.0"
+horizontal_alignment = 2
+
 [node name="PlayerBox" type="TextureRect" parent="."]
 offset_left = 587.0
 offset_top = 342.0
@@ -216,6 +230,20 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("6_ngxqq")
 theme_override_font_sizes/font_size = 60
 text = "1"
+horizontal_alignment = 2
+
+[node name="PlayerLevel" type="Label" parent="PlayerBox"]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 19.0
+offset_right = 386.0
+offset_bottom = 88.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("6_ngxqq")
+theme_override_font_sizes/font_size = 40
+text = "Lv.0"
 horizontal_alignment = 2
 
 [node name="ActionBox" type="TextureRect" parent="."]
@@ -303,6 +331,7 @@ text = "Return
 "
 
 [node name="MoveDetails" type="Label" parent="ActionBox/MoveButtons"]
+visible = false
 offset_left = 929.0
 offset_top = 20.0
 offset_right = 1201.0

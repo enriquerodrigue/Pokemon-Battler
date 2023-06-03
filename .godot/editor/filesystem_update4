@@ -1,3 +1,7 @@
 res://Scenes/battle_arena.tscn
 res://Scenes/battle_scene.tscn
 res://Scripts/BattleSystem.gd
+res://Scripts/Pokemon.gd
+res://Resources/Blueprints/PokemonRes.gd
+res://Resources/Pokemon/Mudkip.tres
+res://Resources/Pokemon/Poochyena.tres

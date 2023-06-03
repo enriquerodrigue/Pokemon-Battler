@@ -12,7 +12,7 @@ class_name PokemonRes
 @export var sp_defense: int
 @export var speed: int
 
-@export var moves = [4]
+@export var moves = []
 
 @export var type1: Global.type
 @export var type2: Global.type
