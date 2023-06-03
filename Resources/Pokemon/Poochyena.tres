@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="PokemonRes" load_steps=5 format=3 uid="uid://cpucvkh73fc2y"]
+[gd_resource type="Resource" script_class="PokemonRes" load_steps=6 format=3 uid="uid://cpucvkh73fc2y"]
 
 [ext_resource type="Resource" uid="uid://bbc143f8p2wuk" path="res://Resources/Moves/Tackle.tres" id="1_7m7c3"]
 [ext_resource type="Script" path="res://Resources/Blueprints/PokemonRes.gd" id="1_k8qyt"]
 [ext_resource type="Texture2D" uid="uid://cs5xgg4a23a4k" path="res://Assets/Pokemon Sprites/Back/261_front.png" id="2_ref67"]
+[ext_resource type="AudioStream" uid="uid://b1xmax4ql1qgb" path="res://Assets/SFX/poochyena.mp3" id="3_0hkym"]
 [ext_resource type="Texture2D" uid="uid://cx3xd7nkts7ln" path="res://Assets/Pokemon Sprites/Front/261_front.png" id="3_glqiv"]
 
 [resource]
@@ -19,3 +20,4 @@ type1 = 1
 type2 = 0
 sprite_front = ExtResource("3_glqiv")
 sprite_back = ExtResource("2_ref67")
+sound_cry = ExtResource("3_0hkym")

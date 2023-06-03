@@ -13,6 +13,7 @@ enum states {
 var state = states.START
 
 func _ready():
+	state = states.START
 	setup_player_hud()
 	setup_enemy_hud()
 	setup_action_box()
@@ -36,14 +37,16 @@ func setup_action_box():
 	$ActionBox/ActionLabel.text = str("A wild ", enemy_pokemon.res.name, " has appeared!")
 
 func _on_animation_player_animation_finished(anim_name):
-	state = states.PLAYER
-	if $ActionBox/ActionButtons.visible == false and not $ActionBox/ActionLabel.text == str("What will ", player_pokemon.res.name, " do?"):
+	if $ActionBox/ActionButtons.visible == false and state == states.START:
 		$ActionBox/Timer.start()
-
+	elif state == states.STANDBY:
+		$PlayerSprite/AnimationPlayer.play("Attack")
 
 func _on_timer_timeout():
-	$ActionBox/ActionLabel.text = str("What will ", player_pokemon.res.name, " do?")
+	state = states.PLAYER
+	$ActionBox/ActionLabel.visible_ratio = 0
 	$ActionBox/ActionLabel/AnimationPlayer.play("Type")
+	$ActionBox/ActionLabel.text = str("What will ", player_pokemon.res.name, " do?")
 	$ActionBox/ActionButtons.visible = true
 
 
@@ -77,3 +80,22 @@ func _on_move_mouse_entered(extra_arg_0):
 		Global.type.keys()[player_pokemon.res.moves[extra_arg_0].type] \
 		+ "\nPP: " + str(player_pokemon.pps[extra_arg_0]) + "/" + \
 		str(player_pokemon.res.moves[extra_arg_0].max_pp)
+
+
+func _on_move_pressed(extra_arg_0):
+	state = states.STANDBY
+	$ActionBox/ActionLabel.text = player_pokemon.res.name \
+	+ " has used " + player_pokemon.res.moves[extra_arg_0].move_name + "!"
+	$ActionBox/MoveButtons.visible = false
+	$ActionBox/ActionLabel/AnimationPlayer.play("Type")
+	$ActionBox/ActionLabel.visible = true
+	
+	
+func _on_player_animation_finished(anim_name):
+	if anim_name == "Attack":
+		$EnemySprite/AnimationPlayer.play("Hit")
+		$PokemonCries.stream = enemy_pokemon.res.sound_cry
+		$PokemonCries.play()
+	elif anim_name == "enter_battle":
+		$PokemonCries.stream = player_pokemon.res.sound_cry
+		$PokemonCries.play()

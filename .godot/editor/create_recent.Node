@@ -1,7 +1,7 @@
 AudioStreamPlayer2D
+Timer
 AnimationPlayer
 Node2D
-Timer
 Button
 Label
 TextureRect

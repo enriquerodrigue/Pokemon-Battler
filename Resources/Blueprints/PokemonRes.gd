@@ -19,3 +19,4 @@ class_name PokemonRes
 #sprite
 @export var sprite_front: Texture
 @export var sprite_back: Texture
+@export var sound_cry: AudioStream
