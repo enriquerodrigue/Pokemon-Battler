@@ -90,6 +90,7 @@ func _on_move_pressed(extra_arg_0):
 	$ActionBox/MoveButtons.visible = false
 	$ActionBox/ActionLabel/AnimationPlayer.play("Type")
 	$ActionBox/ActionLabel.visible = true
+	handle_move(player_pokemon.res.moves[extra_arg_0])
 	
 	
 func _on_player_animation_finished(anim_name):
@@ -97,6 +98,37 @@ func _on_player_animation_finished(anim_name):
 		$EnemySprite/AnimationPlayer.play("Hit")
 		$PokemonCries.stream = enemy_pokemon.res.sound_cry
 		$PokemonCries.play()
+		
 	elif anim_name == "enter_battle":
 		$PokemonCries.stream = player_pokemon.res.sound_cry
 		$PokemonCries.play()
+	
+func _on_enemy_animation_finished(anim_name):
+	if anim_name == "Hit":
+		$EnemyBox/EnemyHealth.text = str(enemy_pokemon.hp) + \
+		"/" + str(enemy_pokemon.max_hp) + "HP"
+
+
+func handle_move(move):
+	if move.category == Global.category.STATUS:
+		print("STATUS")
+	elif move.category == Global.category.PHYSICAL:
+		print("PHYSICAL")
+		enemy_pokemon.take_damage(calculate_damage(move))
+	elif move.category == Global.category.SPECIAL:
+		print("SPECIAL")
+		enemy_pokemon.take_damage(calculate_damage(move))
+
+func calculate_damage(move):
+	var attack
+	var defense
+	if move.category == Global.category.PHYSICAL:
+		attack = player_pokemon.calculate_attack()
+		defense = enemy_pokemon.calculate_defense()
+	elif move.category == Global.category.SPECIAL:
+		attack = player_pokemon.calculate_sp_attack()
+		defense = enemy_pokemon.calculate_sp_defense()
+		
+	var damage = (move.power * attack/defense)/10
+	return damage
+

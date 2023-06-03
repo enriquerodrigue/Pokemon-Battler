@@ -1,3 +1,10 @@
-res://Scenes/battle_scene.tscn
-res://Scenes/battle_arena.tscn
 res://Scripts/BattleSystem.gd
+res://Scenes/battle_arena.tscn
+res://Scenes/battle_scene.tscn
+res://Resources/Blueprints/PokemonRes.gd
+res://Resources/Pokemon/Mudkip.tres
+res://Resources/Pokemon/Poochyena.tres
+res://Resources/Moves/Water_Gun.tres
+res://Resources/Blueprints/MovesRes.gd
+res://Resources/Moves/Tackle.tres
+res://Scripts/Pokemon.gd

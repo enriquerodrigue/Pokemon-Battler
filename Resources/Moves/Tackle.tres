@@ -9,5 +9,5 @@ type = 1
 category = 1
 max_pp = 35
 description = "The user headbutts the other pokemon"
-damage = 40
+power = 40
 accuracy = 100

@@ -7,5 +7,5 @@ class_name MovesRes
 @export var category: Global.category
 @export var max_pp: int
 @export_multiline var description: String
-@export var damage: int
+@export var power: int
 @export var accuracy: int

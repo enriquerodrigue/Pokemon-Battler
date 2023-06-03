@@ -6,8 +6,8 @@
 script = ExtResource("1_s2fmf")
 move_name = "Water Gun"
 type = 3
-category = 1
+category = 2
 max_pp = 30
 description = ""
-damage = 0
-accuracy = 0
+power = 40
+accuracy = 100
