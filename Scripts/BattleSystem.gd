@@ -53,5 +53,6 @@ func _on_return_pressed():
 
 
 func _on_move_mouse_entered(extra_arg_0):
-	$ActionBox/MoveButtons/MoveDetails.text \
-	= "Type/" + Global.type.keys()[player_pokemon.res.moves[extra_arg_0].type]
+	if not player_pokemon.res.moves[extra_arg_0] == null:
+		$ActionBox/MoveButtons/MoveDetails.text \
+		= "Type/" + Global.type.keys()[player_pokemon.res.moves[extra_arg_0].type]

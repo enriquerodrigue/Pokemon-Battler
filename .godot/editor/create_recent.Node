@@ -1,5 +1,6 @@
-Node2D
+AudioStreamPlayer2D
 AnimationPlayer
+Node2D
 Timer
 Button
 Label

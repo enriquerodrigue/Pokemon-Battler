@@ -1,7 +1,3 @@
 res://Scenes/battle_arena.tscn
-res://Scripts/BattleSystem.gd
 res://Scenes/battle_scene.tscn
-res://Resources/Pokemon/Mudkip.tres
-res://Scripts/Global.gd
-res://Resources/Moves/Tackle.tres
-res://Resources/Moves/Water_Gun.tres
+res://Scripts/BattleSystem.gd
