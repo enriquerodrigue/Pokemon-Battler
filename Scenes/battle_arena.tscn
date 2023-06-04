@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://veec4qhghq4g"]
+[gd_scene load_steps=24 format=3 uid="uid://veec4qhghq4g"]
 
 [ext_resource type="Texture2D" uid="uid://da6y8cqgdwqpw" path="res://Assets/UI/battle_background.png" id="1_3mkj8"]
 [ext_resource type="Script" path="res://Scripts/BattleSystem.gd" id="1_vxj8h"]
@@ -39,6 +39,30 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(-50, 240)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_7oh4w"]
 resource_name = "enter_battle"
@@ -56,9 +80,55 @@ tracks/0/keys = {
 "values": [Vector2(-50, 240), Vector2(190, 240), Vector2(170, 240)]
 }
 
+[sub_resource type="Animation" id="Animation_pj8bx"]
+resource_name = "Hit"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_ggds2"]
+resource_name = "Faint"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(170, 240), Vector2(170, 400)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_clwc7"]
 _data = {
 "Attack": SubResource("Animation_m7mdj"),
+"Faint": SubResource("Animation_ggds2"),
+"Hit": SubResource("Animation_pj8bx"),
 "RESET": SubResource("Animation_g3ygr"),
 "enter_battle": SubResource("Animation_7oh4w")
 }
@@ -105,6 +175,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_a3mae"]
 resource_name = "enter_battle"
@@ -122,8 +204,54 @@ tracks/0/keys = {
 "values": [Vector2(900, 129), Vector2(650, 129), Vector2(680, 129)]
 }
 
+[sub_resource type="Animation" id="Animation_uu63i"]
+resource_name = "Attack"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(680, 129), Vector2(580, 129), Vector2(680, 129)]
+}
+
+[sub_resource type="Animation" id="Animation_w03bb"]
+resource_name = "Faint"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(680, 129), Vector2(680, 250)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jo67r"]
 _data = {
+"Attack": SubResource("Animation_uu63i"),
+"Faint": SubResource("Animation_w03bb"),
 "Hit": SubResource("Animation_aelvj"),
 "RESET": SubResource("Animation_aplx0"),
 "enter_battle": SubResource("Animation_a3mae")
@@ -182,7 +310,7 @@ metadata/_edit_use_anchors_ = true
 offset_left = -50.0
 offset_top = 240.0
 offset_right = 262.0
-offset_bottom = 552.0
+offset_bottom = 552.001
 texture = ExtResource("3_act06")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerSprite"]

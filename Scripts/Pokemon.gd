@@ -1,8 +1,6 @@
 extends Node
 
 # TODO: Change moves from res to a moves[] on this class
-
-
 class_name Pokemon
 
 var res: PokemonRes
@@ -42,3 +40,6 @@ func calculate_sp_defense():
 
 func take_damage(damage):
 	hp -= damage
+	if hp < 0:
+		hp = 0
+		
