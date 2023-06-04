@@ -1,5 +1,3 @@
 res://Scenes/battle_arena.tscn
 res://Scripts/BattleSystem.gd
 res://Scenes/battle_scene.tscn
-res://Resources/Moves/Tackle.tres
-res://Scripts/Pokemon.gd

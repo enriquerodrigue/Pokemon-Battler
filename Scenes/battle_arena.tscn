@@ -25,6 +25,50 @@ tracks/0/keys = {
 "values": [Vector2(170, 240), Vector2(230, 240), Vector2(170, 240)]
 }
 
+[sub_resource type="Animation" id="Animation_ggds2"]
+resource_name = "Faint"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(170, 240), Vector2(170, 400)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_pj8bx"]
+resource_name = "Hit"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
 [sub_resource type="Animation" id="Animation_g3ygr"]
 length = 0.001
 tracks/0/type = "value"
@@ -80,50 +124,6 @@ tracks/0/keys = {
 "values": [Vector2(-50, 240), Vector2(190, 240), Vector2(170, 240)]
 }
 
-[sub_resource type="Animation" id="Animation_pj8bx"]
-resource_name = "Hit"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, false, true]
-}
-
-[sub_resource type="Animation" id="Animation_ggds2"]
-resource_name = "Faint"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(170, 240), Vector2(170, 400)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_clwc7"]
 _data = {
 "Attack": SubResource("Animation_m7mdj"),
@@ -131,6 +131,50 @@ _data = {
 "Hit": SubResource("Animation_pj8bx"),
 "RESET": SubResource("Animation_g3ygr"),
 "enter_battle": SubResource("Animation_7oh4w")
+}
+
+[sub_resource type="Animation" id="Animation_uu63i"]
+resource_name = "Attack"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(680, 129), Vector2(580, 129), Vector2(680, 129)]
+}
+
+[sub_resource type="Animation" id="Animation_w03bb"]
+resource_name = "Faint"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(680, 129), Vector2(680, 250)]
 }
 
 [sub_resource type="Animation" id="Animation_aelvj"]
@@ -202,50 +246,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(900, 129), Vector2(650, 129), Vector2(680, 129)]
-}
-
-[sub_resource type="Animation" id="Animation_uu63i"]
-resource_name = "Attack"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(680, 129), Vector2(580, 129), Vector2(680, 129)]
-}
-
-[sub_resource type="Animation" id="Animation_w03bb"]
-resource_name = "Faint"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(680, 129), Vector2(680, 250)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jo67r"]
@@ -493,11 +493,11 @@ theme_override_font_sizes/font_size = 35
 text = "Run
 "
 
-[node name="MoveButtons" type="Node2D" parent="ActionBox"]
+[node name="PlayerMoves" type="Node2D" parent="ActionBox"]
 visible = false
 position = Vector2(-482, 5)
 
-[node name="Return" type="Button" parent="ActionBox/MoveButtons"]
+[node name="Return" type="Button" parent="ActionBox/PlayerMoves"]
 offset_left = 1250.0
 offset_top = 73.0
 offset_right = 1352.0
@@ -507,7 +507,7 @@ theme_override_font_sizes/font_size = 35
 text = "Return
 "
 
-[node name="MoveDetails" type="Label" parent="ActionBox/MoveButtons"]
+[node name="MoveDetails" type="Label" parent="ActionBox/PlayerMoves"]
 visible = false
 offset_left = 929.0
 offset_top = 20.0
@@ -519,9 +519,9 @@ theme_override_font_sizes/font_size = 60
 text = "Type/Fire"
 horizontal_alignment = 2
 
-[node name="Buttons" type="Node2D" parent="ActionBox/MoveButtons"]
+[node name="Buttons" type="Node2D" parent="ActionBox/PlayerMoves"]
 
-[node name="Move1" type="Button" parent="ActionBox/MoveButtons/Buttons"]
+[node name="Move1" type="Button" parent="ActionBox/PlayerMoves/Buttons"]
 offset_left = 616.0
 offset_top = 16.0
 offset_right = 718.0
@@ -530,7 +530,7 @@ theme_override_fonts/font = ExtResource("6_ngxqq")
 theme_override_font_sizes/font_size = 35
 text = "123"
 
-[node name="Move2" type="Button" parent="ActionBox/MoveButtons/Buttons"]
+[node name="Move2" type="Button" parent="ActionBox/PlayerMoves/Buttons"]
 offset_left = 736.0
 offset_top = 16.0
 offset_right = 838.0
@@ -539,7 +539,7 @@ theme_override_fonts/font = ExtResource("6_ngxqq")
 theme_override_font_sizes/font_size = 35
 text = "123"
 
-[node name="Move3" type="Button" parent="ActionBox/MoveButtons/Buttons"]
+[node name="Move3" type="Button" parent="ActionBox/PlayerMoves/Buttons"]
 offset_left = 617.0
 offset_top = 75.0
 offset_right = 719.0
@@ -548,7 +548,7 @@ theme_override_fonts/font = ExtResource("6_ngxqq")
 theme_override_font_sizes/font_size = 35
 text = "123"
 
-[node name="Move4" type="Button" parent="ActionBox/MoveButtons/Buttons"]
+[node name="Move4" type="Button" parent="ActionBox/PlayerMoves/Buttons"]
 offset_left = 736.0
 offset_top = 76.0
 offset_right = 838.0
@@ -558,22 +558,22 @@ theme_override_font_sizes/font_size = 35
 text = "123
 "
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="BGMPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_ba4h8")
 volume_db = -8.0
 
 [connection signal="animation_finished" from="PlayerSprite/AnimationPlayer" to="." method="_on_player_animation_finished"]
 [connection signal="animation_finished" from="EnemySprite/AnimationPlayer" to="." method="_on_enemy_animation_finished"]
-[connection signal="animation_finished" from="ActionBox/ActionLabel/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="ActionBox/ActionLabel/AnimationPlayer" to="." method="_on_typing_animation_finished"]
 [connection signal="timeout" from="ActionBox/Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="ActionBox/ActionButtons/Fight" to="." method="_on_fight_pressed"]
 [connection signal="pressed" from="ActionBox/ActionButtons/Run" to="." method="_on_run_pressed"]
-[connection signal="pressed" from="ActionBox/MoveButtons/Return" to="." method="_on_return_pressed"]
-[connection signal="mouse_entered" from="ActionBox/MoveButtons/Buttons/Move1" to="." method="_on_move_mouse_entered" binds= [0]]
-[connection signal="pressed" from="ActionBox/MoveButtons/Buttons/Move1" to="." method="_on_move_pressed" binds= [0]]
-[connection signal="mouse_entered" from="ActionBox/MoveButtons/Buttons/Move2" to="." method="_on_move_mouse_entered" binds= [1]]
-[connection signal="pressed" from="ActionBox/MoveButtons/Buttons/Move2" to="." method="_on_move_pressed" binds= [1]]
-[connection signal="mouse_entered" from="ActionBox/MoveButtons/Buttons/Move3" to="." method="_on_move_mouse_entered" binds= [2]]
-[connection signal="pressed" from="ActionBox/MoveButtons/Buttons/Move3" to="." method="_on_move_pressed" binds= [2]]
-[connection signal="mouse_entered" from="ActionBox/MoveButtons/Buttons/Move4" to="." method="_on_move_mouse_entered" binds= [3]]
-[connection signal="pressed" from="ActionBox/MoveButtons/Buttons/Move4" to="." method="_on_move_pressed" binds= [3]]
+[connection signal="pressed" from="ActionBox/PlayerMoves/Return" to="." method="_on_return_pressed"]
+[connection signal="mouse_entered" from="ActionBox/PlayerMoves/Buttons/Move1" to="." method="_on_move_mouse_entered" binds= [0]]
+[connection signal="pressed" from="ActionBox/PlayerMoves/Buttons/Move1" to="." method="_on_move_pressed" binds= [0]]
+[connection signal="mouse_entered" from="ActionBox/PlayerMoves/Buttons/Move2" to="." method="_on_move_mouse_entered" binds= [1]]
+[connection signal="pressed" from="ActionBox/PlayerMoves/Buttons/Move2" to="." method="_on_move_pressed" binds= [1]]
+[connection signal="mouse_entered" from="ActionBox/PlayerMoves/Buttons/Move3" to="." method="_on_move_mouse_entered" binds= [2]]
+[connection signal="pressed" from="ActionBox/PlayerMoves/Buttons/Move3" to="." method="_on_move_pressed" binds= [2]]
+[connection signal="mouse_entered" from="ActionBox/PlayerMoves/Buttons/Move4" to="." method="_on_move_mouse_entered" binds= [3]]
+[connection signal="pressed" from="ActionBox/PlayerMoves/Buttons/Move4" to="." method="_on_move_pressed" binds= [3]]

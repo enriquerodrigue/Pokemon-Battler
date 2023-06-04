@@ -25,60 +25,39 @@ func _ready():
 	setup_player_hud()
 	setup_enemy_hud()
 	setup_action_box()
-	$AudioStreamPlayer2D.play(0.3)
+	$BGMPlayer.play(0.3)
 	
 	
 func setup_player_hud():
 	$PlayerSprite.texture = player_pokemon.res.sprite_back
 	$PlayerBox/PlayerName.text = player_pokemon.res.name
-	$PlayerBox/PlayerHealth.text = str(player_pokemon.hp) \
-	+ "/" + str(player_pokemon.max_hp) + "HP"
+	update_ui_hp($PlayerBox/PlayerHealth, player_pokemon)
 	$PlayerBox/PlayerLevel.text = str("Lv.", player_pokemon.level)
 	
 func setup_enemy_hud():
 	$EnemySprite.texture = enemy_pokemon.res.sprite_front
 	$EnemyBox/EnemyName.text = enemy_pokemon.res.name
-	$EnemyBox/EnemyHealth.text = str(enemy_pokemon.hp) + \
-	"/" + str(enemy_pokemon.max_hp) + "HP"
+	update_ui_hp($EnemyBox/EnemyHealth, enemy_pokemon)
 	$EnemyBox/EnemyLevel.text = str("Lv.", enemy_pokemon.level)
 	
 func setup_action_box():
-	$ActionBox/ActionLabel.text = str("A wild ", enemy_pokemon.res.name, " has appeared!")
-
-# Action Label done typing
-func _on_animation_player_animation_finished(anim_name):
-	if $ActionBox/ActionButtons.visible == false and state == states.START:
-		$ActionBox/Timer.start()
-	elif state == states.STANDBY:
-		if turn == turns.PLAYER:
-			$PlayerSprite/AnimationPlayer.play("Attack")
-		else:
-			$EnemySprite/AnimationPlayer.play("Attack")
-	elif state == states.END:
-		loser_anim_player.play("Faint")
-		
+	type_on_action_label(str("A wild ", enemy_pokemon.res.name, " has appeared!"))
 
 func _on_timer_timeout():
 	handle_player_turn()
 
-
 func handle_player_turn():
 	state = states.PLAYER
-	$ActionBox/ActionLabel.visible_ratio = 0
-	$ActionBox/ActionLabel/AnimationPlayer.play("Type")
-	$ActionBox/ActionLabel.text = str("What will ", player_pokemon.res.name, " do?")
+	type_on_action_label(str("What will ", player_pokemon.res.name, " do?"))
 	$ActionBox/ActionButtons.visible = true
-	
 
 func _on_run_pressed():
 	get_tree().quit()
 
 func _on_fight_pressed():
-	$ActionBox/ActionButtons.visible = false
-	$ActionBox/ActionLabel.visible = false
-	$ActionBox/MoveButtons.visible = true
+	setup_action_box_menus(false)
 	var move_index = 0
-	for button in $ActionBox/MoveButtons/Buttons.get_children():
+	for button in $ActionBox/PlayerMoves/Buttons.get_children():
 		if move_index < len(player_pokemon.res.moves):
 			button.text = str(player_pokemon.res.moves[move_index].move_name)
 		else:
@@ -87,15 +66,14 @@ func _on_fight_pressed():
 		move_index += 1
 
 func _on_return_pressed():
-	$ActionBox/ActionButtons.visible = true
-	$ActionBox/ActionLabel.visible = true
-	$ActionBox/MoveButtons.visible = false
+	setup_action_box_menus(false)
+	
 
 
 func _on_move_mouse_entered(extra_arg_0):
 	if extra_arg_0 < len(player_pokemon.res.moves):
-		$ActionBox/MoveButtons/MoveDetails.visible = true
-		$ActionBox/MoveButtons/MoveDetails.text \
+		$ActionBox/PlayerMoves/MoveDetails.visible = true
+		$ActionBox/PlayerMoves/MoveDetails.text \
 		= "Type/" + \
 		Global.type.keys()[player_pokemon.res.moves[extra_arg_0].type] \
 		+ "\nPP: " + str(player_pokemon.pps[extra_arg_0]) + "/" + \
@@ -120,14 +98,12 @@ func _on_player_animation_finished(anim_name):
 		$PokemonCries.play()
 		
 	elif anim_name == "Hit":
-		$PlayerBox/PlayerHealth.text = str(player_pokemon.hp) + \
-		"/" + str(player_pokemon.max_hp) + "HP"
+		update_ui_hp($PlayerBox/PlayerHealth, player_pokemon)
 		check_if_pokemon_died(player_pokemon)
 	
 func _on_enemy_animation_finished(anim_name):
 	if anim_name == "Hit":
-		$EnemyBox/EnemyHealth.text = str(enemy_pokemon.hp) + \
-		"/" + str(enemy_pokemon.max_hp) + "HP"
+		update_ui_hp($EnemyBox/EnemyHealth, enemy_pokemon)
 		check_if_pokemon_died(enemy_pokemon)
 	elif anim_name == "Attack":
 		$PlayerSprite/AnimationPlayer.play("Hit")
@@ -138,13 +114,11 @@ func _on_enemy_animation_finished(anim_name):
 func handle_move(move, attacker, defender):
 	state = states.STANDBY
 	if move.category == Global.category.STATUS:
-		print("STATUS")
 		#attacker.boost_stat
+		print("TODO: STATUS")
 	elif move.category == Global.category.PHYSICAL:
-		print("PHYSICAL")
 		defender.take_damage(calculate_damage(move))
 	elif move.category == Global.category.SPECIAL:
-		print("SPECIAL")
 		defender.take_damage(calculate_damage(move))
 
 func calculate_damage(move):
@@ -170,18 +144,16 @@ func handle_enemy_turn():
 	change_ui_on_move(move, enemy_pokemon)
 	
 func change_ui_on_move(move, attacker):
-	$ActionBox/ActionLabel.text = attacker.res.name \
-	+ " has used " + move.move_name + "!"
-	$ActionBox/MoveButtons.visible = false
-	$ActionBox/ActionLabel/AnimationPlayer.play("Type")
+	$ActionBox/PlayerMoves.visible = false
+	type_on_action_label(attacker.res.name \
+	+ " has used " + move.move_name + "!")
 	$ActionBox/ActionLabel.visible = true
+	
 	
 func check_if_pokemon_died(pokemon):
 	if pokemon.hp <= 0:
 		state = states.END
-		$ActionBox/ActionLabel.visible_ratio = 0
-		$ActionBox/ActionLabel/AnimationPlayer.play("Type")
-		$ActionBox/ActionLabel.text = str(pokemon.res.name, " has fainted!")
+		type_on_action_label(str(pokemon.res.name, " has fainted!"))
 		if pokemon == player_pokemon:
 			loser_anim_player = $PlayerSprite/AnimationPlayer
 		else:
@@ -192,3 +164,31 @@ func check_if_pokemon_died(pokemon):
 		else:
 			handle_player_turn()
 		
+
+
+func _on_typing_animation_finished(anim_name):
+	if $ActionBox/ActionButtons.visible == false and state == states.START:
+		$ActionBox/Timer.start()
+	elif state == states.STANDBY:
+		if turn == turns.PLAYER:
+			$PlayerSprite/AnimationPlayer.play("Attack")
+		else:
+			$EnemySprite/AnimationPlayer.play("Attack")
+	elif state == states.END:
+		loser_anim_player.play("Faint")
+		
+		
+# UI 
+func update_ui_hp(label, pokemon):
+	label.text = str(pokemon.hp) \
+	+ "/" + str(pokemon.max_hp) + "HP"
+	
+func type_on_action_label(text):
+	$ActionBox/ActionLabel.visible_ratio = 0
+	$ActionBox/ActionLabel/AnimationPlayer.play("Type")
+	$ActionBox/ActionLabel.text = text
+	
+func setup_action_box_menus(boolVal):
+	$ActionBox/ActionButtons.visible = boolVal
+	$ActionBox/ActionLabel.visible = boolVal
+	$ActionBox/PlayerMoves.visible = not boolVal
