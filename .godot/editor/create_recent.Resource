@@ -1,2 +1,5 @@
+PowerMoveRes
+StatusMoveRes
+Resource
 MovesRes
 PokemonRes

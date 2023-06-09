@@ -1,13 +1,14 @@
-[gd_resource type="Resource" script_class="MovesRes" load_steps=2 format=3 uid="uid://dem6lxmcx67bh"]
+[gd_resource type="Resource" script_class="PowerMoveRes" load_steps=2 format=3 uid="uid://dwsg318jxyfxr"]
 
-[ext_resource type="Script" path="res://Resources/Blueprints/MovesRes.gd" id="1_s2fmf"]
+[ext_resource type="Script" path="res://Resources/Blueprints/PowerMoveRes.gd" id="1_lbf7q"]
 
 [resource]
-script = ExtResource("1_s2fmf")
+script = ExtResource("1_lbf7q")
+power = 40
+category = 1
 move_name = "Water Gun"
 type = 3
-category = 2
-max_pp = 30
-description = ""
-power = 40
+max_pp = 25
+description = "Water Gun inflicts damage and has no secondary effect."
 accuracy = 100
+target = 1

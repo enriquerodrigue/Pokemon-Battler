@@ -1,13 +1,14 @@
-[gd_resource type="Resource" script_class="MovesRes" load_steps=2 format=3 uid="uid://bbc143f8p2wuk"]
+[gd_resource type="Resource" script_class="PowerMoveRes" load_steps=2 format=3 uid="uid://bmjgi4q5sb6uw"]
 
-[ext_resource type="Script" path="res://Resources/Blueprints/MovesRes.gd" id="1_rcr52"]
+[ext_resource type="Script" path="res://Resources/Blueprints/PowerMoveRes.gd" id="1_uf813"]
 
 [resource]
-script = ExtResource("1_rcr52")
+script = ExtResource("1_uf813")
+power = 40
+category = 0
 move_name = "Tackle"
 type = 1
-category = 1
 max_pp = 35
 description = "The user headbutts the other pokemon"
-power = 40
 accuracy = 100
+target = 1

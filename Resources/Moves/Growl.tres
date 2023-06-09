@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="StatusMoveRes" load_steps=2 format=3 uid="uid://e8585trm7xhb"]
+
+[ext_resource type="Script" path="res://Resources/Blueprints/StatusMoveRes.gd" id="1_pe5ds"]
+
+[resource]
+script = ExtResource("1_pe5ds")
+stat_to_alter = null
+target = 1
+boost_percentage = -10.0
+alter_type = 1
+move_name = "Growl"
+type = 1
+max_pp = 40
+description = "Growl decreases the Attack stat of all adjacent opponents by one stage."
+accuracy = 100

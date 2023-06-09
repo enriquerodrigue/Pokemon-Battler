@@ -27,7 +27,6 @@ func _ready():
 	setup_action_box()
 	$BGMPlayer.play(0.3)
 	
-	
 func setup_player_hud():
 	$PlayerSprite.texture = player_pokemon.res.sprite_back
 	$PlayerBox/PlayerName.text = player_pokemon.res.name
@@ -67,8 +66,6 @@ func _on_fight_pressed():
 
 func _on_return_pressed():
 	setup_action_box_menus(false)
-	
-
 
 func _on_move_mouse_entered(extra_arg_0):
 	if extra_arg_0 < len(player_pokemon.res.moves):
@@ -109,31 +106,16 @@ func _on_enemy_animation_finished(anim_name):
 		$PlayerSprite/AnimationPlayer.play("Hit")
 		$PokemonCries.stream = player_pokemon.res.sound_cry
 		$PokemonCries.play()
-		
 
+
+#TODO: FIND BETTER WAY!!
 func handle_move(move, attacker, defender):
 	state = states.STANDBY
-	if move.category == Global.category.STATUS:
-		#attacker.boost_stat
-		print("TODO: STATUS")
-	elif move.category == Global.category.PHYSICAL:
-		defender.take_damage(calculate_damage(move))
-	elif move.category == Global.category.SPECIAL:
-		defender.take_damage(calculate_damage(move))
-
-func calculate_damage(move):
-	var attack
-	var defense
-	if move.category == Global.category.PHYSICAL:
-		attack = player_pokemon.calculate_attack()
-		defense = enemy_pokemon.calculate_defense()
-	elif move.category == Global.category.SPECIAL:
-		attack = player_pokemon.calculate_sp_attack()
-		defense = enemy_pokemon.calculate_sp_defense()
-		
-	var damage = (move.power * attack/defense)/10
-	return damage
-
+	if move.target == move.targets.PLAYER:
+		move.execute(attacker, attacker)
+	elif move.target == move.targets.ENEMY:
+		move.execute(defender, attacker)
+	
 
 func handle_enemy_turn():
 	state = states.ENEMY
@@ -149,7 +131,6 @@ func change_ui_on_move(move, attacker):
 	+ " has used " + move.move_name + "!")
 	$ActionBox/ActionLabel.visible = true
 	
-	
 func check_if_pokemon_died(pokemon):
 	if pokemon.hp <= 0:
 		state = states.END
@@ -163,8 +144,6 @@ func check_if_pokemon_died(pokemon):
 			handle_enemy_turn()
 		else:
 			handle_player_turn()
-		
-
 
 func _on_typing_animation_finished(anim_name):
 	if $ActionBox/ActionButtons.visible == false and state == states.START:

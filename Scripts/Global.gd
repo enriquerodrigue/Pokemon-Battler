@@ -9,7 +9,6 @@ enum type {
 }
 
 enum category {
-	STATUS,
 	PHYSICAL,
 	SPECIAL
 }
