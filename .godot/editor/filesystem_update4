@@ -1,12 +1,4 @@
-res://Scenes/battle_scene.tscn
-res://Scripts/Global.gd
-res://Resources/Blueprints/MovesRes.gd
-res://Resources/Blueprints/StatusMoveRes.gd
-res://Resources/Moves/Growl.tres
-res://Resources/Blueprints/PowerMoveRes.gd
 res://Scenes/battle_arena.tscn
+res://Scripts/Pokemon.gd
 res://Scripts/BattleSystem.gd
-res://Resources/Moves/Tackle.tres
-res://Resources/Moves/Water_Gun.tres
-res://Resources/Pokemon/Mudkip.tres
-res://Resources/Pokemon/Poochyena.tres
+res://Resources/Blueprints/PowerMoveRes.gd

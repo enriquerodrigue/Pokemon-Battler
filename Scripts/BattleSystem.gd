@@ -19,6 +19,8 @@ enum turns {
 var state = states.START
 var turn
 var loser_anim_player
+var player_move
+var moves_executed = [false, false]
 
 func _ready():
 	state = states.START
@@ -78,10 +80,9 @@ func _on_move_mouse_entered(extra_arg_0):
 
 
 func _on_move_pressed(extra_arg_0):
-	var move = player_pokemon.res.moves[extra_arg_0]
-	turn = turns.PLAYER
-	change_ui_on_move(move, player_pokemon)
-	handle_move(player_pokemon.res.moves[extra_arg_0], player_pokemon, enemy_pokemon)
+	moves_executed = [false, false]
+	player_move = player_pokemon.res.moves[extra_arg_0]
+	handle_speed(player_pokemon, enemy_pokemon)
 	
 	
 func _on_player_animation_finished(anim_name):
@@ -107,6 +108,20 @@ func _on_enemy_animation_finished(anim_name):
 		$PokemonCries.stream = player_pokemon.res.sound_cry
 		$PokemonCries.play()
 
+func handle_speed(player, enemy):
+	state = states.STANDBY
+	if player.calculate_speed() > enemy.calculate_speed():
+		turn = turns.PLAYER
+		moves_executed[0] = true
+		change_ui_on_move(player_move, player_pokemon)
+		handle_move(player_move, player, enemy)
+	elif player.calculate_speed() < enemy.calculate_speed():
+		handle_enemy_turn()
+	else:
+		if randf() > 0.5:
+			handle_move(player_move, player, enemy)
+		else:
+			handle_enemy_turn()
 
 #TODO: FIND BETTER WAY!!
 func handle_move(move, attacker, defender):
@@ -120,6 +135,7 @@ func handle_move(move, attacker, defender):
 func handle_enemy_turn():
 	state = states.ENEMY
 	turn = turns.ENEMY
+	moves_executed[1] = true
 	var moves = enemy_pokemon.res.moves
 	var move = moves[randi() % moves.size()]
 	handle_move(move, enemy_pokemon, player_pokemon)
@@ -140,10 +156,16 @@ func check_if_pokemon_died(pokemon):
 		else:
 			loser_anim_player = $EnemySprite/AnimationPlayer
 	else:
-		if turn == turns.PLAYER:
+		if turn == turns.PLAYER and moves_executed[1] == false:
 			handle_enemy_turn()
 		else:
-			handle_player_turn()
+			if moves_executed == [true,true]:
+				handle_player_turn()
+			else:
+				handle_move(player_move, player_pokemon, enemy_pokemon)
+				change_ui_on_move(player_move, player_pokemon)
+				turn = turns.PLAYER
+				moves_executed[0] = true
 
 func _on_typing_animation_finished(anim_name):
 	if $ActionBox/ActionButtons.visible == false and state == states.START:

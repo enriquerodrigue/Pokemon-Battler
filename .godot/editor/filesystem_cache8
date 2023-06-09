@@ -1,38 +1,41 @@
 2a60927148abd1d33b818b535e306557
-::res://::1686274592
-::res://Assets/::1685811442
-::res://Assets/Fonts/::1685640492
-pokemon_pixel_font.ttf::FontFile::2931065913730896429::1685640204::1685640492::1::::<><>::
-::res://Assets/Music/::1685755200
-battle music.mp3::AudioStreamMP3::5395307111255490622::1685755088::1685755200::1::::<><>::
-::res://Assets/Pokemon Sprites/::1685639960
-::res://Assets/Pokemon Sprites/Back/::1685640892
-258_back.png::CompressedTexture2D::7473123682659993312::1685640867::1685640892::1::::<><>::
-261_front.png::CompressedTexture2D::6099579451066247860::1685640870::1685640892::1::::<><>::
-::res://Assets/Pokemon Sprites/Front/::1685640892
-258_front.png::CompressedTexture2D::8838511360532020837::1685640797::1685640892::1::::<><>::
-261_front.png::CompressedTexture2D::6446390897700115523::1685640824::1685640892::1::::<><>::
-::res://Assets/SFX/::1685811442
-mudkip.mp3::AudioStreamMP3::855717506696617291::1685811442::1685811442::1::::<><>::
-poochyena.mp3::AudioStreamMP3::4259541164117603917::1685811442::1685811442::1::::<><>::
-::res://Assets/UI/::1685640492
-battle_background.png::CompressedTexture2D::7224774030521489140::1685639532::1685639536::1::::<><>::
-dialog_box.png::CompressedTexture2D::5324265372084418632::1685640257::1685640492::1::::<><>::
-pokemon_box.png::CompressedTexture2D::4270281591723444727::1685640252::1685640492::1::::<><>::
-::res://Resources/::1685642938
-::res://Resources/Blueprints/::1685891959
-MovesRes.gd::GDScript::-1::1685891959::0::1::::MovesRes<>Resource<>::
-PokemonRes.gd::GDScript::-1::1685811442::0::1::::PokemonRes<>Resource<>::
-::res://Resources/Moves/::1685893296
-Tackle.tres::Resource/Resource::2462370192572750514::1685893296::0::1::::<><>::res://Resources/Blueprints/MovesRes.gd
-Water_Gun.tres::Resource/Resource::7466693055886432593::1685891959::0::1::::<><>::res://Resources/Blueprints/MovesRes.gd
-::res://Resources/Pokemon/::1685811442
-Mudkip.tres::Resource/Resource::4169032223550999593::1685811442::0::1::::<><>::res://Resources/Blueprints/PokemonRes.gd<>uid://bbc143f8p2wuk<>uid://dem6lxmcx67bh<>uid://deqbixba3ih1q<>uid://dx6o8xl3b26q8<>uid://mgrso6c6ktyp
-Poochyena.tres::Resource/Resource::5867121050234102238::1685811442::0::1::::<><>::uid://bbc143f8p2wuk<>res://Resources/Blueprints/PokemonRes.gd<>uid://cs5xgg4a23a4k<>uid://b1xmax4ql1qgb<>uid://cx3xd7nkts7ln
-::res://Scenes/::1685923061
-battle_arena.tscn::PackedScene::1482471215194180248::1685923061::0::1::::<><>::uid://da6y8cqgdwqpw<>res://Scripts/BattleSystem.gd<>uid://cs5xgg4a23a4k<>uid://dx6o8xl3b26q8<>uid://b13s6cqx3y36j<>uid://bh03hy3md3o8d<>uid://ch4d4w7je0uro<>uid://ci4r6jmds1yao
-battle_scene.tscn::PackedScene::1134676020120499078::1685923011::0::1::::<><>::
-::res://Scripts/::1685923131
-BattleSystem.gd::GDScript::-1::1685923131::0::1::::<>CanvasLayer<>::
-Global.gd::GDScript::-1::1685754397::0::1::::<>Node<>::
-Pokemon.gd::GDScript::-1::1685895451::0::1::::Pokemon<>Node<>::
+::res://::1686348855
+::res://Assets/::1685810653
+::res://Assets/Fonts/::1685641234
+pokemon_pixel_font.ttf::FontFile::2931065913730896429::1685641234::1685641234::1::::<><>::
+::res://Assets/Music/::1685755382
+battle music.mp3::AudioStreamMP3::5395307111255490622::1685755382::1685755382::1::::<><>::
+::res://Assets/Pokemon Sprites/::1685641234
+::res://Assets/Pokemon Sprites/Back/::1685641234
+258_back.png::CompressedTexture2D::7473123682659993312::1685641234::1685641234::1::::<><>::
+261_front.png::CompressedTexture2D::6099579451066247860::1685641234::1685641234::1::::<><>::
+::res://Assets/Pokemon Sprites/Front/::1685641234
+258_front.png::CompressedTexture2D::8838511360532020837::1685641234::1685641234::1::::<><>::
+261_front.png::CompressedTexture2D::6446390897700115523::1685641234::1685641234::1::::<><>::
+::res://Assets/SFX/::1685810671
+mudkip.mp3::AudioStreamMP3::855717506696617291::1685810627::1685810671::1::::<><>::
+poochyena.mp3::AudioStreamMP3::4259541164117603917::1685810614::1685810671::1::::<><>::
+::res://Assets/UI/::1685641234
+battle_background.png::CompressedTexture2D::7224774030521489140::1685641234::1685641234::1::::<><>::
+dialog_box.png::CompressedTexture2D::5324265372084418632::1685641234::1685641234::1::::<><>::
+pokemon_box.png::CompressedTexture2D::4270281591723444727::1685641234::1685641234::1::::<><>::
+::res://Resources/::1685641315
+::res://Resources/Blueprints/::1686348834
+MovesRes.gd::GDScript::-1::1686348834::0::1::::MovesRes<>Resource<>::
+PokemonRes.gd::GDScript::-1::1685810750::0::1::::PokemonRes<>Resource<>::
+PowerMoveRes.gd::GDScript::-1::1686348834::0::1::::PowerMoveRes<>MovesRes<>::
+StatusMoveRes.gd::GDScript::-1::1686348834::0::1::::StatusMoveRes<>MovesRes<>::
+::res://Resources/Moves/::1686348834
+Growl.tres::Resource/StatusMoveRes::350761887259468651::1686348834::0::1::::<><>::res://Resources/Blueprints/StatusMoveRes.gd
+Tackle.tres::Resource/PowerMoveRes::3247646344725083042::1686348834::0::1::::<><>::res://Resources/Blueprints/PowerMoveRes.gd
+Water_Gun.tres::Resource/PowerMoveRes::8740991131901281347::1686348834::0::1::::<><>::res://Resources/Blueprints/PowerMoveRes.gd
+::res://Resources/Pokemon/::1686348834
+Mudkip.tres::Resource/PokemonRes::4169032223550999593::1686348834::0::1::::<><>::res://Resources/Blueprints/PokemonRes.gd<>uid://bmjgi4q5sb6uw<>uid://dwsg318jxyfxr<>uid://deqbixba3ih1q<>uid://dx6o8xl3b26q8<>uid://mgrso6c6ktyp
+Poochyena.tres::Resource/PokemonRes::5867121050234102238::1686348834::0::1::::<><>::uid://bmjgi4q5sb6uw<>res://Resources/Blueprints/PokemonRes.gd<>uid://e8585trm7xhb<>uid://cs5xgg4a23a4k<>uid://b1xmax4ql1qgb<>uid://cx3xd7nkts7ln
+::res://Scenes/::1686348834
+battle_arena.tscn::PackedScene::1482471215194180248::1686348834::0::1::::<><>::uid://da6y8cqgdwqpw<>res://Scripts/BattleSystem.gd<>uid://cs5xgg4a23a4k<>uid://dx6o8xl3b26q8<>uid://b13s6cqx3y36j<>uid://bh03hy3md3o8d<>uid://ch4d4w7je0uro<>uid://ci4r6jmds1yao
+battle_scene.tscn::PackedScene::1134676020120499078::1685814187::0::1::::<><>::
+::res://Scripts/::1686348834
+BattleSystem.gd::GDScript::-1::1686348834::0::1::::<>CanvasLayer<>::
+Global.gd::GDScript::-1::1686348834::0::1::::<>Node<>::
+Pokemon.gd::GDScript::-1::1686348834::0::1::::Pokemon<>Node<>::

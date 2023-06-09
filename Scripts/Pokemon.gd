@@ -12,6 +12,7 @@ var attack: int
 var defense: int
 var sp_attack: int
 var sp_defense: int
+var speed: int
 
 func _init(res, level):
 		self.res = res
@@ -37,6 +38,10 @@ func calculate_sp_attack():
 func calculate_sp_defense():
 	sp_defense = floor((res.sp_defense*level)/100) + 5
 	return sp_defense
+
+func calculate_speed():
+	speed = floor((res.speed*level)/100) + 5
+	return speed
 
 func take_damage(damage):
 	hp -= damage
