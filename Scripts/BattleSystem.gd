@@ -45,9 +45,9 @@ func setup_action_box():
 	type_on_action_label(str("A wild ", enemy_pokemon.res.name, " has appeared!"))
 
 func _on_timer_timeout():
-	handle_player_turn()
+	start_new_turn()
 
-func handle_player_turn():
+func start_new_turn():
 	state = states.PLAYER
 	type_on_action_label(str("What will ", player_pokemon.res.name, " do?"))
 	$ActionBox/ActionButtons.visible = true
@@ -82,7 +82,7 @@ func _on_move_mouse_entered(extra_arg_0):
 func _on_move_pressed(extra_arg_0):
 	moves_executed = [false, false]
 	player_move = player_pokemon.res.moves[extra_arg_0]
-	handle_speed(player_pokemon, enemy_pokemon)
+	handle_speed()
 	
 	
 func _on_player_animation_finished(anim_name):
@@ -108,20 +108,16 @@ func _on_enemy_animation_finished(anim_name):
 		$PokemonCries.stream = player_pokemon.res.sound_cry
 		$PokemonCries.play()
 
-func handle_speed(player, enemy):
-	state = states.STANDBY
-	if player.calculate_speed() > enemy.calculate_speed():
-		turn = turns.PLAYER
-		moves_executed[0] = true
-		change_ui_on_move(player_move, player_pokemon)
-		handle_move(player_move, player, enemy)
-	elif player.calculate_speed() < enemy.calculate_speed():
+func handle_speed():
+	var player_speed = player_pokemon.calculate_speed()
+	var enemy_speed = enemy_pokemon.calculate_speed()
+	
+	if player_speed > enemy_speed:
+		handle_player_turn()
+	elif player_speed < enemy_speed:
 		handle_enemy_turn()
 	else:
-		if randf() > 0.5:
-			handle_move(player_move, player, enemy)
-		else:
-			handle_enemy_turn()
+		randomize_move()
 
 #TODO: FIND BETTER WAY!!
 func handle_move(move, attacker, defender):
@@ -131,6 +127,11 @@ func handle_move(move, attacker, defender):
 	elif move.target == move.targets.ENEMY:
 		move.execute(defender, attacker)
 	
+func handle_player_turn():
+	turn = turns.PLAYER
+	handle_move(player_move, player_pokemon, enemy_pokemon)
+	change_ui_on_move(player_move, player_pokemon)
+	moves_executed[0] = true
 
 func handle_enemy_turn():
 	state = states.ENEMY
@@ -160,12 +161,9 @@ func check_if_pokemon_died(pokemon):
 			handle_enemy_turn()
 		else:
 			if moves_executed == [true,true]:
-				handle_player_turn()
+				start_new_turn()
 			else:
-				handle_move(player_move, player_pokemon, enemy_pokemon)
-				change_ui_on_move(player_move, player_pokemon)
-				turn = turns.PLAYER
-				moves_executed[0] = true
+				handle_player_turn()
 
 func _on_typing_animation_finished(anim_name):
 	if $ActionBox/ActionButtons.visible == false and state == states.START:
@@ -178,7 +176,13 @@ func _on_typing_animation_finished(anim_name):
 	elif state == states.END:
 		loser_anim_player.play("Faint")
 		
-		
+
+func randomize_move():
+	if randf() > 0.5:
+		handle_move(player_move, player_pokemon, enemy_pokemon)
+	else:
+		handle_enemy_turn()
+
 # UI 
 func update_ui_hp(label, pokemon):
 	label.text = str(pokemon.hp) \
