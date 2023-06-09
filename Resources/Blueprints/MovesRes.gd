@@ -16,4 +16,4 @@ enum targets {
 @export var target: targets
 
 func execute(target: Pokemon, attacker: Pokemon):
-	print("generic move")
+	print(str(attacker.res.name, " used ", move_name, "!"))

@@ -10,14 +10,10 @@ enum categories{
 @export var power: int
 @export var category: categories
 
-
-
-
 func execute(target: Pokemon, attacker: Pokemon):
+	super(target, attacker)
 	var damage = calculate_damage(target, attacker)
 	target.take_damage(calculate_damage(target, attacker))
-	
-	
 	
 func calculate_damage(target: Pokemon, attacker: Pokemon):
 	var attack

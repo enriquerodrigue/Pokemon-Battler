@@ -1,8 +1,5 @@
 extends MovesRes
-
 class_name StatusMoveRes
-
-
 
 enum stats{
 	ATTACK,
@@ -16,12 +13,12 @@ enum alter_types{
 }
 
 @export var stat_to_alter: stats
-
 @export var boost_percentage: float
 @export var alter_type: alter_types
 
 #TODO: Fix having need to put attacker in this function
 func execute(target: Pokemon, attacker: Pokemon):
+	super(target, attacker)
 	if alter_type == alter_types.DECREASE:
 		match stat_to_alter:
 			stats.ATTACK:
