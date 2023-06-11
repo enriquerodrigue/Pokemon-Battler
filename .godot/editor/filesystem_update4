@@ -1,2 +1,3 @@
 res://Scenes/battle_arena.tscn
+res://Resources/Blueprints/PowerMoveRes.gd
 res://Scripts/BattleSystem.gd

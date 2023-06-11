@@ -1,7 +1,7 @@
 extends CanvasLayer
 
-var player_pokemon = Pokemon.new(load("res://Resources/Pokemon/Mudkip.tres"),1)
-var enemy_pokemon = Pokemon.new(load("res://Resources/Pokemon/Poochyena.tres"),10)
+var player_pokemon = Pokemon.new(load("res://Resources/Pokemon/Mudkip.tres"),5)
+var enemy_pokemon = Pokemon.new(load("res://Resources/Pokemon/Poochyena.tres"),5)
 
 enum states {
 	START,
