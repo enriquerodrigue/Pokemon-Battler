@@ -14,6 +14,20 @@ enum targets {
 @export_multiline var description: String
 @export var accuracy: int
 @export var target: targets
+var move_effectiveness
 
 func execute(target: Pokemon, attacker: Pokemon):
 	print(str(attacker.res.name, " used ", move_name, "!"))
+	
+func determine_effectiveness_string():
+	if self is StatusMoveRes:
+		return ""
+	
+	if move_effectiveness > 1:
+		return "It's super effective!"
+	elif move_effectiveness == 1: 
+		return ""
+	else:
+		return "It's not very effective!"
+	
+

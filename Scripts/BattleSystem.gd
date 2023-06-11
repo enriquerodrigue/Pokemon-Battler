@@ -21,6 +21,8 @@ var turn
 var loser_anim_player
 var player_move
 var moves_executed = [false, false]
+var effectiveness_string
+var wait_for_effectiveness
 
 func _ready():
 	state = states.START
@@ -97,12 +99,15 @@ func _on_player_animation_finished(anim_name):
 		
 	elif anim_name == "Hit":
 		update_ui_hp($PlayerBox/PlayerHealth, player_pokemon)
-		check_if_pokemon_died(player_pokemon)
+		type_on_action_label(effectiveness_string)
+		wait_for_effectiveness = true
 	
 func _on_enemy_animation_finished(anim_name):
 	if anim_name == "Hit":
 		update_ui_hp($EnemyBox/EnemyHealth, enemy_pokemon)
-		check_if_pokemon_died(enemy_pokemon)
+		type_on_action_label(effectiveness_string)
+		wait_for_effectiveness = true
+		
 	elif anim_name == "Attack":
 		$PlayerSprite/AnimationPlayer.play("Hit")
 		$PokemonCries.stream = player_pokemon.res.sound_cry
@@ -124,9 +129,11 @@ func handle_move(move, attacker, defender):
 	state = states.STANDBY
 	if move.target == move.targets.PLAYER:
 		move.execute(attacker, attacker)
+		effectiveness_string = move.determine_effectiveness_string()
 	elif move.target == move.targets.ENEMY:
 		move.execute(defender, attacker)
-	
+		effectiveness_string = move.determine_effectiveness_string()
+
 func handle_player_turn():
 	turn = turns.PLAYER
 	handle_move(player_move, player_pokemon, enemy_pokemon)
@@ -169,7 +176,10 @@ func _on_typing_animation_finished(anim_name):
 	if $ActionBox/ActionButtons.visible == false and state == states.START:
 		$ActionBox/Timer.start()
 	elif state == states.STANDBY:
-		if turn == turns.PLAYER:
+		if wait_for_effectiveness:
+			$ActionBox/ActionLabel/EffectivenessTimer.start()
+			wait_for_effectiveness = false
+		elif turn == turns.PLAYER:
 			$PlayerSprite/AnimationPlayer.play("Attack")
 		else:
 			$EnemySprite/AnimationPlayer.play("Attack")
@@ -189,11 +199,19 @@ func update_ui_hp(label, pokemon):
 	+ "/" + str(pokemon.max_hp) + "HP"
 	
 func type_on_action_label(text):
+	$ActionBox/ActionLabel/AnimationPlayer.stop(false)
 	$ActionBox/ActionLabel.visible_ratio = 0
-	$ActionBox/ActionLabel/AnimationPlayer.play("Type")
+	$ActionBox/ActionLabel/AnimationPlayer.play("Type", 0.0)
 	$ActionBox/ActionLabel.text = text
 	
 func setup_action_box_menus(boolVal):
 	$ActionBox/ActionButtons.visible = boolVal
 	$ActionBox/ActionLabel.visible = boolVal
 	$ActionBox/PlayerMoves.visible = not boolVal
+
+
+func _on_effectiveness_timer_timeout():
+	if turn == turns.PLAYER:
+		check_if_pokemon_died(enemy_pokemon)
+	else:
+		check_if_pokemon_died(player_pokemon)

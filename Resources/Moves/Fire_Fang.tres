@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="PowerMoveRes" load_steps=2 format=3 uid="uid://dvlfb52pnwpc4"]
+
+[ext_resource type="Script" path="res://Resources/Blueprints/PowerMoveRes.gd" id="1_i801u"]
+
+[resource]
+script = ExtResource("1_i801u")
+power = 65
+category = 0
+move_name = "Fire Fang"
+type = 2
+max_pp = 15
+description = "Fire Fang deals damage and has a 10% chance of burning the opponent."
+accuracy = 95
+target = 1
